@@ -1,6 +1,6 @@
 import './Reservations.css';
 import Card from "./Card"
-function Reservations({ reservations }){
+function Reservations({ reservations}){
 
   const reservationCards = reservations.map(reservation => {
     return (
