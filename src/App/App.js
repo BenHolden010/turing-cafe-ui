@@ -2,7 +2,7 @@ import './App.css';
 import React, { useEffect, useState } from 'react';
 import Form from '../Form'
 import Reservations from '../Reservations';
-import {fetchReservations, postReservation }  from '../fetchCalls';
+import {fetchReservations, postReservation, deleteReservation }  from '../fetchCalls';
 
 function App() {
 
@@ -12,11 +12,17 @@ function App() {
     fetchReservations()
     .then(data=>setReservations(data))
     .catch(err=>console.log(err))
-  },[reservations])
+  },[])
 
   function addReservation(newReservation){
-    // setReservations([...reservations, newReservation]);
+    setReservations([...reservations, newReservation]);
     postReservation(newReservation)
+  }
+
+  function cancelReservation(id){
+    const filteredReservations = reservations.filter(reservation => reservation.id !== id);
+    setReservations(filteredReservations)
+    deleteReservation(id)
   }
 
   return (
@@ -26,7 +32,7 @@ function App() {
       <Form addReservation={addReservation}/>
       </div>
       <div className='resy-container'>
-      <Reservations reservations={reservations} />
+      <Reservations reservations={reservations} cancelReservation={cancelReservation} />
       </div>
     </div>
   );

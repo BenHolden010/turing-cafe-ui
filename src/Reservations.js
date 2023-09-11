@@ -1,6 +1,6 @@
 import './Reservations.css';
 import Card from "./Card"
-function Reservations({ reservations}){
+function Reservations({ reservations, cancelReservation}){
 
   const reservationCards = reservations.map(reservation => {
     return (
@@ -11,6 +11,7 @@ function Reservations({ reservations}){
         number={reservation.number}
         id={reservation.id}
         key={reservation.id}
+        cancelReservation={cancelReservation}
       />
     )
   })
