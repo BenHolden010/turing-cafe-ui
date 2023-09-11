@@ -55,7 +55,7 @@ function submitReservations(event) {
             placeholder='Number of guests'
             name='number'
             value={number}
-            onChange={event => setNumber(event.target.value) }
+            onChange={event => setNumber(event.target.value)}
           />
 
           <button onClick = { event => submitReservations(event)}>SUBMIT</button>
