@@ -6,6 +6,9 @@ describe('home page', () => {
       statusCode:200,
       fixture: 'reservations'
     })
+    .intercept("POST",'http://localhost:3001/api/v1/reservations', {
+      body: {name:'Savannah', date:'07/23', time:'7:00', number:'5'}
+    })
     .visit("http://localhost:3000/")
   })
   it('should have a title, input field, and 3 reservations', () => {
